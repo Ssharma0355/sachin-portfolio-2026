@@ -45,7 +45,7 @@ const pageMeta = {
   "/education": {
     title: "Education - Sachin Sharma | B.Tech Computer Science",
     description:
-      "Educational background of Sachin Sharma — B.Tech in Computer Science with 8.48 CGPA.",
+      "Educational background of Sachin Sharma — B.Tech in Computer Science with 7.64 CGPA.",
   },
   "/certificates": {
     title: "Certificates - Sachin Sharma | Developer Certifications",

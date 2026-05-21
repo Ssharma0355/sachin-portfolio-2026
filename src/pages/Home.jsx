@@ -8,43 +8,62 @@ import {
   Check,
   FileDown,
   User,
+  Sparkles,
 } from "lucide-react";
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import useSWR from "swr";
-import cvPdf from "@/assets/files/cv_pdf/Sachin_Sharma_(CV).pdf";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import cvPdf from "@/assets/files/cv_pdf/Sachin_Sharma_CV.pdf";
+
+const fetcher = async (url) => {
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch");
+  }
+
+  return res.json();
+};
 
 const Home = () => {
   const [copied, setCopied] = useState(false);
-  const email = "ssharma0355@gmail.com";
-  const whatsappNumber = "+919113704388";
 
+  const email = "ssharma0355@gmail.com";
+  const whatsappNumber = "919113704388";
+
+  // GitHub API
   const { data: githubData } = useSWR(
-    "https://github.com/Ssharma0355",
+    "https://api.github.com/users/Ssharma0355",
     fetcher,
     {
       revalidateOnFocus: false,
       dedupingInterval: 60000,
       shouldRetryOnError: true,
       errorRetryCount: 3,
-    },
+    }
   );
 
-  function formatRepoCount(count) {
+  const githubRepos = githubData?.public_repos || 0;
+
+  const formatRepoCount = (count) => {
     if (count < 5) return count.toString();
     return `${Math.floor(count / 5) * 5}+`;
-  }
+  };
 
-  const githubRepos = githubData?.public_repos || 0;
   const displayRepos = formatRepoCount(githubRepos);
 
+  // Copy Email
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(email);
+
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
     }
@@ -60,167 +79,167 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 mt-7 sm:mt-0 md:mt-3 lg:mt-5">
-      <div className="text-center relative z-10 max-w-4xl mx-auto">
+    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="text-center relative z-10 max-w-5xl mx-auto">
+        {/* Tag */}
+       
+
+        {/* Main Heading */}
         <motion.h1
-          className="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 sm:mb-6 relative tracking-tighter"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight mb-4"
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           Sachin Sharma
         </motion.h1>
-        <motion.h1
-          className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 relative tracking-tighter"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          I design & code for web
-        </motion.h1>
 
-        <motion.p
-          className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-4 sm:mb-5 max-w-2xl mx-auto px-2 sm:px-4"
-          initial={{ opacity: 0, y: 20 }}
+        {/* Sub Heading */}
+        <motion.h2
+          className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-300 mb-6 tracking-tight"
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
         >
-          Software Developer specializing in Full Stack Development with
-          expertise in React.js, Node.js and modern Web Technologies.
+          I design & build modern web experiences
+        </motion.h2>
+
+        {/* Description */}
+        <motion.p
+          className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto px-2"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          Software Developer specializing in scalable full-stack applications
+          using React.js, Node.js, JavaScript, and modern frontend technologies.
+          Passionate about building fast, responsive, and visually polished user
+          experiences.
         </motion.p>
 
+        {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col items-center gap-4 sm:gap-6"
-          initial={{ opacity: 0, y: 20 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.45 }}
         >
-          <div className="flex justify-center space-x-3 sm:space-x-4">
-            <a
-              href={cvPdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 sm:px-6 py-2.5 sm:py-3 bg-white text-black rounded-full text-sm sm:text-base font-medium hover:bg-gray-100 transition-colors flex items-center gap-2"
-            >
-              <FileDown className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-              Download CV
-            </a>
-            <Link
-              to="/about"
-              className="px-4 sm:px-6 py-2.5 sm:py-3 bg-white/10 text-white rounded-full text-sm sm:text-base font-medium hover:bg-white/20 transition-colors flex items-center gap-2"
-            >
-              <User className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
-              About Me
-            </Link>
-          </div>
+          {/* Resume */}
+          <a
+            href={cvPdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center gap-2 shadow-lg hover:scale-105"
+          >
+            <FileDown className="w-5 h-5" />
+            Download CV
+          </a>
 
+          {/* About */}
+          <Link
+            to="/about"
+            className="px-7 py-3 rounded-full bg-white/10 border border-white/10 text-white font-semibold hover:bg-white/20 transition-all duration-300 flex items-center gap-2 hover:scale-105"
+          >
+            <User className="w-5 h-5" />
+            About Me
+          </Link>
+        </motion.div>
+
+        {/* Email */}
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
           <button
             onClick={handleEmailClick}
-            className="group relative flex items-center gap-2 py-2 pl-8 pr-4 hover:bg-transparent transition-all cursor-copy sm:cursor-pointer"
-            aria-label={`Email: ${email}`}
+            className="group relative inline-flex items-center gap-2 py-2 pl-8 pr-4 hover:bg-white/5 rounded-full transition-all duration-300 cursor-copy sm:cursor-pointer"
+            aria-label={`Email ${email}`}
           >
-            <div className="absolute left-0 flex items-center">
+            <div className="absolute left-3 flex items-center">
               <div className="w-3 text-gray-500 group-hover:text-white transition-colors">
                 <VercelLogo />
               </div>
-              <span className="text-lg font-mono text-gray-400 ml-3 group-hover:text-white transition-colors">
+
+              <span className="text-lg font-mono text-gray-500 ml-3 group-hover:text-white transition-colors">
                 ~
               </span>
             </div>
-            <span className="text-gray-400 group-hover:text-white transition-colors ml-4 sm:text-base">
+
+            <span className="text-gray-400 group-hover:text-white transition-colors ml-5 text-sm sm:text-base">
               {email}
             </span>
-            <div className="opacity-0 group-hover:opacity-100 transition-opacity ml-1 hidden sm:block">
+
+            <div className="hidden sm:flex opacity-0 group-hover:opacity-100 transition-opacity">
               {copied ? (
-                <Check className="w-4 h-4 text-green-500" aria-hidden="true" />
+                <Check className="w-4 h-4 text-green-500" />
               ) : (
-                <Copy
-                  className="w-4 h-4 text-gray-400 hover:text-white transition-colors"
-                  aria-hidden="true"
-                />
+                <Copy className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
               )}
             </div>
           </button>
         </motion.div>
 
+        {/* Social Stats */}
         <motion.div
-          className="grid grid-cols-3 justify-items-center gap-6 mt-8 sm:mt-12 max-w-xs sm:max-w-none mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-14"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.75 }}
         >
+          {/* GitHub */}
           <motion.a
             href="https://github.com/Ssharma0355"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center group w-full"
-            whileHover={{ y: -2 }}
-            aria-label="Visit GitHub profile"
+            whileHover={{ y: -6 }}
+            className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
           >
-            <div className="p-3 rounded-xl transition-colors mb-2 w-full max-w-[200px]">
-              <Github className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-white transition-colors mx-auto" />
-            </div>
-            <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              <span className="text-base sm:text-lg font-semibold">
-                {displayRepos}
-              </span>
-              <span className="text-xs sm:text-sm text-gray-400">
-                GitHub Projects
-              </span>
-            </motion.div>
+            <Github className="w-7 h-7 text-gray-300 mx-auto mb-4" />
+
+            <h3 className="text-2xl font-bold">{displayRepos}</h3>
+
+            <p className="text-gray-400 text-sm mt-1">
+              GitHub Projects
+            </p>
           </motion.a>
 
+          {/* LinkedIn */}
           <motion.a
             href="https://www.linkedin.com/in/sachin-sharma-sde/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center group w-full"
-            whileHover={{ y: -2 }}
-            aria-label="Visit LinkedIn profile"
+            whileHover={{ y: -6 }}
+            className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
           >
-            <div className="p-3 rounded-xl transition-colors mb-2 w-full max-w-[200px]">
-              <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-white transition-colors mx-auto" />
-            </div>
-            <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              <span className="text-base sm:text-lg font-semibold">4000+</span>
-              <span className="text-xs sm:text-sm text-gray-400">
-                LinkedIn Followers
-              </span>
-            </motion.div>
+            <Linkedin className="w-7 h-7 text-gray-300 mx-auto mb-4" />
+
+            <h3 className="text-2xl font-bold">4000+</h3>
+
+            <p className="text-gray-400 text-sm mt-1">
+              LinkedIn Followers
+            </p>
           </motion.a>
 
+          {/* WhatsApp */}
           <motion.a
             href={`https://wa.me/${whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center group w-full"
-            whileHover={{ y: -2 }}
-            aria-label="Contact via WhatsApp"
+            whileHover={{ y: -6 }}
+            className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
           >
-            <div className="p-3 rounded-xl transition-colors mb-2 w-full max-w-[200px]">
-              <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-white transition-colors mx-auto" />
-            </div>
-            <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              <span className="text-base sm:text-lg font-semibold">24x7</span>
-              <span className="text-xs sm:text-sm text-gray-400">
-                WhatsApp Me
-              </span>
-            </motion.div>
+            <MessageCircle className="w-7 h-7 text-gray-300 mx-auto mb-4" />
+
+            <h3 className="text-2xl font-bold">24×7</h3>
+
+            <p className="text-gray-400 text-sm mt-1">
+              Available on WhatsApp
+            </p>
           </motion.a>
         </motion.div>
       </div>
