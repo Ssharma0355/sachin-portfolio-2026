@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import {
   Code2,
   Briefcase,
   GraduationCap,
   Globe,
-  Download,
+  FileDown,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 
 import profileImg from "@/assets/profile/profile.jpg";
-import cvPdf from "@/assets/files/cv_pdf/Sachin_Sharma_CV.pdf";
+const cvPdf = new URL(
+  "../assets/files/cv_pdf/Sachin_Sharma_CV.pdf",
+  import.meta.url
+).href;
 
 const About = () => {
   const achievements = [
@@ -135,15 +138,13 @@ const About = () => {
           {/* Buttons */}
           <ScrollAnimation>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={cvPdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2"
+              <Link
+                to="/resume"
+                className="px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center gap-2 shadow-lg hover:scale-105"
               >
-                <Download className="w-4 h-4" />
-                Download CV
-              </a>
+                <FileDown className="w-5 h-5" />
+                View Resume
+              </Link>
 
               <Link
                 to="/skills"
