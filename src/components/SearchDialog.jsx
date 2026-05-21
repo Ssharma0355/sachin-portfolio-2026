@@ -242,9 +242,9 @@ const SearchDialog = () => {
   if (!isOpen) {
     return (
       <button
-        onClick={() => setIsOpen(true)}
-        className="group flex items-center gap-3 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-      >
+      onClick={() => setIsOpen(true)}
+      className="group flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto px-3 sm:px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+    >
         <Search className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
 
         <span className="hidden sm:block text-sm text-gray-400 group-hover:text-white transition-colors">

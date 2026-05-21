@@ -1,5 +1,8 @@
 import { VercelLogo } from "@/components/TechLogos";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
+
 import { motion } from "framer-motion";
+
 import {
   Github,
   Linkedin,
@@ -8,17 +11,12 @@ import {
   Check,
   FileDown,
   User,
-  Sparkles,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import useSWR from "swr";
 
-const cvPdf = new URL(
-  "../assets/files/cv_pdf/Sachin_Sharma_CV.pdf",
-  import.meta.url
-).href;
 const fetcher = async (url) => {
   const res = await fetch(url);
 
@@ -85,8 +83,17 @@ const Home = () => {
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="text-center relative z-10 max-w-5xl mx-auto">
-        {/* Tag */}
+      <div className="text-center relative z-10 max-w-5xl mx-auto pt-24 md:pt-32">     
+      <ScrollAnimation>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold mb-12 gradient-text text-center"
+        >
+        Welcome to My Portfolio
+        </motion.h2>
+      </ScrollAnimation>
        
 
         {/* Main Heading */}
