@@ -55,6 +55,11 @@ const pageMeta = {
     description:
       "Get in touch with Sachin Sharma for freelance projects, job opportunities or collaborations. Based in Kolkata, India.",
   },
+  "/content": {
+    title: "Content Creation - Sachin Sharma | Tech Creator & Developer",
+    description:
+      "Explore tech content, developer insights, coding tutorials, frontend engineering tips, and AI/web development content created by Sachin Sharma.",
+  },
 };
 
 // Hook to update document title + meta description on route change
