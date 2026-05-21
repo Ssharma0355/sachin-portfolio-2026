@@ -1,161 +1,234 @@
 import { motion } from "framer-motion";
+
 import {
   Briefcase,
   MapPin,
   Building2,
-  ExternalLink,
+  Calendar,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
+
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import codeAlphaImg from "@/assets/experience/codeAlpha_page.jpg";
-import bharatInternImg from "@/assets/experience/bharatIntern_page.jpg";
-import codeClauseImg from "@/assets/experience/codeClause_page.jpg";
-import oasisInfobyteImg from "@/assets/experience/oasisInfobyte_page.jpg";
-import codeAlphaPdf from "@/assets/files/experience_pdf/codeAlpha.pdf";
-import bharatInternPdf from "@/assets/files/experience_pdf/bharatIntern.pdf";
-import codeClausePdf from "@/assets/files/experience_pdf/codeClause.pdf";
-import oasisInfobytePdf from "@/assets/files/experience_pdf/oasisInfobyte.pdf";
+
+// Company Images
+import slideooImg from "@/assets/experience/slideoo_page.jpg";
+import myclnqImg from "@/assets/experience/myclnq_page.jpg";
 
 const experiences = [
   {
-    title: "Software Engineering Intern",
-    company: "Code Alpha",
-    location: "Remote",
-    period: "Jun 2024 - Aug 2024",
-    type: "Internship",
-    image: codeAlphaImg,
-    certificateUrl: codeAlphaPdf,
+    title: "Frontend Developer",
+
+    company: "Slideoo AI",
+
+    location: "Bengaluru, India",
+
+    period: "Jun 2025 - Present",
+
+    type: "Full Time",
+
+    image: slideooImg,
+
+    tech: [
+      "Next.js",
+      "React.js",
+      "Zustand",
+      "Tailwind CSS",
+      "FastAPI",
+      "TypeScript",
+    ],
+
     description: [
-      "Optimized web application performance with JavaScript and React.js, achieving a 98% error-free rate",
-      "Implemented advanced features on a React.js platform, resulting in a 40% surge in user interaction",
+      "Built scalable frontend modules using Next.js App Router and Zustand, improving rendering performance by 30% through optimized state subscriptions and store architecture.",
+
+      "Converted Figma designs into reusable UI systems, improving development consistency and accelerating feature delivery speed.",
+
+      "Implemented API caching strategies integrated with FastAPI-backed services to reduce redundant network requests and improve responsiveness during high user activity.",
+
+      "Optimized application performance using dynamic imports and route-level code splitting for faster initial page loads and smoother UX.",
     ],
   },
+
   {
-    title: "Full Stack Development Intern",
-    company: "Bharat Intern",
-    location: "Remote",
-    period: "Jun 2024 - Jul 2024",
-    type: "Internship",
-    image: bharatInternImg,
-    certificateUrl: bharatInternPdf,
-    description: [
-      "Designed 3 websites with CSS, JavaScript, React.js, Node.js and MongoDB, resulting in a 30% increase in user engagement",
-      "Built a money tracker app using HTML, CSS, React.js, Node.js, and MongoDB, improving user financial tracking by 25%",
+    title: "Frontend Developer",
+
+    company: "MyCLNQ Health",
+
+    location: "Remote, Singapore",
+
+    period: "Nov 2023 - Jun 2025",
+
+    type: "Full Time",
+
+    image: myclnqImg,
+
+    tech: [
+      "React.js",
+      "Redux Toolkit",
+      "JWT Authentication",
+      "REST APIs",
+      "Material UI",
+      "Node.js",
     ],
-  },
-  {
-    title: "Web Applications Intern",
-    company: "CodeClause",
-    location: "Remote",
-    period: "Jun 2023 - Jul 2023",
-    type: "Internship",
-    image: codeClauseImg,
-    certificateUrl: codeClausePdf,
+
     description: [
-      "Engineered a real-time collaborative document editor using Next.js, TypeScript, and Liveblocks, reducing latency by 30%",
-      "Implemented and optimized a personal portfolio with Next.js and Tailwind CSS, improving performance by 40%",
-    ],
-  },
-  {
-    title: "Junior Web Developer",
-    company: "Oasis Infobyte",
-    location: "Remote",
-    period: "Jun 2023 - Jul 2023",
-    type: "Internship",
-    image: oasisInfobyteImg,
-    certificateUrl: oasisInfobytePdf,
-    description: [
-      "Engineered a real-time collaborative document editor using Next.js, TypeScript, and Liveblocks, reducing latency by 30%",
-      "Implemented and optimized a personal portfolio with Next.js and Tailwind CSS, improving performance by 40%",
+      "Led migration of a legacy multi-page healthcare application into a modern React.js SPA, improving navigation and usability across patient workflows.",
+
+      "Refactored Redux state management and optimized rendering logic, reducing average page load time by 200ms.",
+
+      "Developed telemedicine and appointment booking modules serving 1,000+ monthly active users with zero critical production issues after deployment.",
+
+      "Implemented JWT authentication, protected routes, token refresh handling, and role-based access control across provider and patient dashboards.",
     ],
   },
 ];
 
 const Experience = () => {
   return (
-    <div className="min-h-screen pt-16 sm:pt-20 px-4 max-w-5xl mx-auto pb-16 sm:pb-20">
+    <div className="min-h-screen pt-20 px-4 max-w-7xl mx-auto pb-20 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 blur-[140px] rounded-full pointer-events-none" />
+
+      {/* Heading */}
       <ScrollAnimation>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 gradient-text flex items-center gap-3">
-          <Briefcase className="w-7 h-7 sm:w-8 sm:h-8" />
-          Professional Experience
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mb-16 text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-5">
+            <Sparkles className="w-4 h-4 text-gray-300" />
+
+            <span className="text-sm text-gray-300">
+              Professional Journey
+            </span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-black gradient-text flex items-center justify-center gap-3">
+            <Briefcase className="w-10 h-10" />
+            Experience
+          </h2>
+
+          <p className="text-gray-400 mt-5 max-w-2xl mx-auto text-lg leading-relaxed">
+            Building scalable SaaS products, AI platforms, and healthcare
+            applications with modern frontend technologies and performant UI
+            systems.
+          </p>
+        </motion.div>
       </ScrollAnimation>
 
-      <div className="space-y-8 sm:space-y-12">
-        {experiences.map((exp) => (
-          <ScrollAnimation key={exp.title}>
-            <div className="group relative bg-gray-800/50 rounded-xl sm:rounded-2xl overflow-hidden backdrop-blur-sm hover:bg-gray-800/70 transition-all border border-white/5">
-              <div className="grid grid-cols-1 md:grid-cols-[1fr,300px]">
-                <div className="p-6 sm:p-8">
-                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                    <div className="p-2 sm:p-3 bg-white/10 rounded-lg sm:rounded-xl group-hover:bg-white/20 transition-colors">
-                      <Building2 className="w-6 h-6 sm:w-7 sm:h-7" />
-                    </div>
+      {/* Experience Cards */}
+      <div className="space-y-12">
+        {experiences.map((exp, index) => (
+          <ScrollAnimation key={exp.company}>
+            <motion.div
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className="group relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-md hover:bg-white/10 transition-all duration-500"
+            >
+              <div className="grid lg:grid-cols-[1fr,360px]">
+                {/* Content */}
+                <div className="p-7 md:p-10">
+                  {/* Header */}
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5 mb-8">
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold mb-1">
-                        {exp.title}
-                      </h3>
-                      <p className="text-gray-400 text-base sm:text-lg">
-                        {exp.company}
-                      </p>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="p-3 rounded-2xl bg-white/10 group-hover:bg-white/20 transition-all duration-300">
+                          <Building2 className="w-7 h-7" />
+                        </div>
+
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-bold">
+                            {exp.title}
+                          </h3>
+
+                          <p className="text-lg text-gray-400 mt-1">
+                            {exp.company}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Meta */}
+                      <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm md:text-base">
+                        <div className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+
+                          <span>{exp.location}</span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+
+                          <span>{exp.period}</span>
+                        </div>
+
+                        <span className="px-3 py-1 bg-white/10 rounded-full text-sm border border-white/10">
+                          {exp.type}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2 text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                    <MapPin className="w-4 h-4" />
-                    <span>{exp.location}</span>
-                    <span>•</span>
-                    <span>{exp.period}</span>
-                  </div>
-
-                  <ul className="space-y-3 sm:space-y-4">
+                  {/* Description */}
+                  <ul className="space-y-5">
                     {exp.description.map((item, i) => (
-                      <li
+                      <motion.li
                         key={i}
-                        className="flex items-start gap-3 text-gray-300 text-sm sm:text-base"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="flex items-start gap-4 text-gray-300"
                       >
-                        <ArrowRight className="w-5 h-5 mt-0.5 text-gray-400 flex-shrink-0" />
-                        <span className="leading-relaxed">{item}</span>
-                      </li>
+                        <ArrowRight className="w-5 h-5 mt-1 text-gray-400 flex-shrink-0" />
+
+                        <span className="leading-relaxed text-sm md:text-base">
+                          {item}
+                        </span>
+                      </motion.li>
                     ))}
                   </ul>
 
-                  <motion.a
-                    href={exp.certificateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="md:hidden mt-6 inline-flex items-center gap-2 px-6 py-2.5 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg transition-all duration-300 text-sm font-medium"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    View Certificate
-                    <ExternalLink className="w-4 h-4" />
-                  </motion.a>
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-3 mt-8">
+                    {exp.tech.map((tech) => (
+                      <motion.span
+                        key={tech}
+                        whileHover={{ y: -2 }}
+                        className="px-4 py-2 rounded-full bg-white/10 border border-white/10 text-sm text-gray-300 hover:bg-white/20 transition-all duration-300"
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="relative hidden md:block">
-                  <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
+                {/* Image Section */}
+                <div className="relative hidden lg:block overflow-hidden min-h-[420px]">
+                  <div className="absolute inset-0">
                     <img
                       src={exp.image}
                       alt={exp.company}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-gray-800/80 to-transparent" />
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
                   </div>
-                  <div className="relative h-full flex items-center justify-center">
-                    <motion.a
-                      href={exp.certificateUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-8 py-3 text-white font-bold bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl flex items-center gap-2 transition-all duration-300 hover:scale-105 border border-white/10 hover:border-white/20"
-                      whileHover={{ y: -5 }}
-                    >
-                      View Certificate
-                      <ExternalLink className="w-4 h-4" />
-                    </motion.a>
+
+                  {/* Floating Company Name */}
+                  <div className="absolute bottom-6 left-6 z-10">
+                    <div className="px-5 py-3 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10">
+
+                      <h4 className="text-xl font-bold">
+                        {exp.company}
+                      </h4>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </ScrollAnimation>
         ))}
       </div>

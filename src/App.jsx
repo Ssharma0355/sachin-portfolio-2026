@@ -4,6 +4,8 @@ import Background3D from "./components/Background3D";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
+import ContentCreator from "./pages/ContentCreator";
+import Resume from "./pages/Resume";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -47,11 +49,7 @@ const pageMeta = {
     description:
       "Educational background of Sachin Sharma — B.Tech in Computer Science with 7.64 CGPA.",
   },
-  "/certificates": {
-    title: "Certificates - Sachin Sharma | Developer Certifications",
-    description:
-      "Professional certifications and achievements of Sachin Sharma in web development and cloud technologies.",
-  },
+ 
   "/contact": {
     title: "Contact - Sachin Sharma | Hire a Full Stack Developer",
     description:
@@ -111,13 +109,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/content" element={<ContentCreator />} />
               <Route path="/education" element={<Education />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/certificates" element={<Certificates />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/resume" element={<Resume />} />
             </Routes>
           </Suspense>
         </main>

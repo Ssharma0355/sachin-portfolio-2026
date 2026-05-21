@@ -15,8 +15,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useSWR from "swr";
 
-import cvPdf from "@/assets/files/cv_pdf/Sachin_Sharma_CV.pdf";
-
+const cvPdf = new URL(
+  "../assets/files/cv_pdf/Sachin_Sharma_CV.pdf",
+  import.meta.url
+).href;
 const fetcher = async (url) => {
   const res = await fetch(url);
 
@@ -128,15 +130,13 @@ const Home = () => {
           transition={{ duration: 0.8, delay: 0.45 }}
         >
           {/* Resume */}
-          <a
-            href={cvPdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center gap-2 shadow-lg hover:scale-105"
-          >
-            <FileDown className="w-5 h-5" />
-            Download CV
-          </a>
+          <Link
+  to="/resume"
+  className="px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all duration-300 flex items-center gap-2 shadow-lg hover:scale-105"
+>
+  <FileDown className="w-5 h-5" />
+  View Resume
+</Link>
 
           {/* About */}
           <Link
