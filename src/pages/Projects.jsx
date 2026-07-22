@@ -15,8 +15,49 @@ import project1 from "@/assets/projects_img/project-1.png";
 import project2 from "@/assets/projects_img/project-2.png";
 import project3 from "@/assets/projects_img/project-3.png";
 import project4 from "@/assets/projects_img/project-4.png";
+import project5 from "@/assets/projects_img/project-5.png";
+
 
 const projects = [
+
+{
+  title: "Affint AI – Powerful AI Workspace",
+
+  description:
+    "A modern AI-powered workspace built with Next.js that enables users to create, edit, and collaborate on AI-generated documents, spreadsheets, and presentations with seamless integrations across popular productivity platforms.",
+
+  image: project5,
+
+  github: "https://github.com/Ssharma0355/ai-office-work.git",
+
+  live: "https://affint.ai/",
+
+  tags: [
+    "Next.js",
+    "React.js",
+    "FastAPI",
+    "MongoDB",
+    "Tailwind CSS",
+    "TypeScript",
+    "JWT Authentication",
+    "AI Integration",
+    "Slack",
+    "GitHub",
+    "Google Workspace"
+  ],
+
+  features: [
+    "Built a full-stack AI workspace with Next.js, enabling users to create, edit, and collaborate on AI-powered documents, spreadsheets, and presentations.",
+
+    "Integrated AI agents to automate content generation, editing, summarization, and workflow assistance across multiple productivity tools.",
+
+    "Connected with Slack, GitHub, Google Workspace, and other third-party services through webhooks for real-time notifications and workflow automation.",
+
+    "Implemented secure JWT authentication, protected routes, and scalable FastAPI backend APIs for AI-powered features.",
+
+    "Designed a responsive, high-performance interface using Tailwind CSS with optimized rendering, lazy loading, and reusable component architecture."
+  ],
+},
   {
     title: "Job & Networking Platform",
 
